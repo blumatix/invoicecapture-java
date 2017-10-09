@@ -15,7 +15,8 @@ A java example application which demonstrates how our invoice capture REST API c
 
 ## Usage
  - Open a shell, e.g. from Powershell
-  ```sh
+ 
+```sh
     cd C:\RepoFolder\invoicefeaturedetection"
 
     PS> pwd
@@ -25,9 +26,10 @@ A java example application which demonstrates how our invoice capture REST API c
     C:\RepoFolder\invoicefeaturedetection
 
     PS> java -cp ".\libs\gson-2.8.0.jar;.\libs\log4j-api-2.9.0.jar;.\libs\log4j-core-2.9.0.jar;.\out\production\invoicefeaturedetection" com.blumatix.Main "C:\PathToYourInvoiceFolder\Invoices" ApiKey CaptureSDKUrl
-    ```
+
+```
     
-    PathToYourInvoiceFolder ... This shall be a valid directory containing invoices that shall be processed.
     
-    ApiKey ... Your API key received from blumatix-consulting 
+PathToYourInvoiceFolder ... This shall be a valid directory containing invoices that shall be processed.    
+ApiKey ... Your API key received from blumatix-consulting 
 
