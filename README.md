@@ -12,6 +12,8 @@ A java example application which demonstrates how our invoice capture REST API c
     
 ## Build
 - Clone this repo: ```git clone https://github.com/blumatix/invoicecapture-java.git```
+- ```cd invoicecapture-java\invoicefeaturedetection```
+- ```javac -cp ".\libs\gson-2.8.0.jar;.\libs\log4j-api-2.9.0.jar;.\libs\log4j-core-2.9.0.jar;.\out\production\invoicefeaturedetection" .\src\com\blumatix\*.java -d .\out\production\invoicefeaturedetection\```
 
 ## Usage
  - Open a shell, e.g. from Powershell
