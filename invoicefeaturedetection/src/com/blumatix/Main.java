@@ -21,25 +21,21 @@ public class Main {
         String apiKey;
         String url;
 
-        if (args.length != 3)
+        if (args.length != 2)
         {
-            System.out.println( "Usage: java -cp \".\\libs\\gson-2.8.0.jar;.\\out\\production\\invoicefeaturedetection\" com.blumatix.Main invoiceFolder apiKey url");
+            System.out.println( "Usage: java -cp \".\\libs\\gson-2.8.0.jar;. PathToClassesRootFolder com.blumatix.Main invoiceFolder apiKey");
             return;
         }
         else
         {
             invoiceFolder = args[0];
             apiKey = args[1];
-            url = args[2];
 
             System.out.println( "Invoice folder: " + invoiceFolder);
             System.out.println( "ApiKey: " + apiKey);
-            System.out.println( "Url: " + url);
         }
 
         Main main = new Main();
-
-        Main.logger.info("Test client started");
 
         // InvoiceFeatures that shall be detected: DocumentType, GrandTotalAmount, InvoiceId, InvoiceDate
         int invoiceFeatures =
@@ -69,15 +65,17 @@ public class Main {
         for (File file : invoices) {
             String filename = file.getAbsolutePath();
             Main.logger.info( "Sending " + ++invoiceCounter + "/" + totalInvoices + " invoice request " + filename );
-            main.requestInvoiceDetails(filename, apiKey, invoiceFeatures, url);
+            main.requestInvoiceDetails(filename, apiKey, invoiceFeatures);
         }
 
         Main.logger.info("Test client finished");
     }
 
-    private void requestInvoiceDetails(String filename, String apiKey, int invoiceFeatures, String url_ ) throws Exception {
+    private void requestInvoiceDetails(String filename, String apiKey, int invoiceFeatures ) throws Exception {
         // REST query
-        String urlString = "http://" + url_ + "/invoicedetail/detect";
+        String urlString = "https://blumatixcapturesdk-v1-2.azurewebsites.net/v1-2/invoicedetail/detect";
+
+        Main.logger.info("CaptureSdk Url: " + urlString);
 
         URL url = new URL(urlString);
 
