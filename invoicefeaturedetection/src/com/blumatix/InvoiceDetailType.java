@@ -8,8 +8,10 @@ public enum InvoiceDetailType {
 
     GrandTotalAmount(16),
     InvoiceDate(64),
+    NetTotalAmount(256),
     InvoiceId(1024),
     DocumentType(8192),
+    VatAmount(131072),
     Iban(16384),
     TaxNo(4194304),
     UId(8388608);

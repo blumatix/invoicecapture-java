@@ -81,6 +81,10 @@ public class InvoiceFeatureDetectionResponse {
         {
             return InvoiceDetailType.GrandTotalAmount.toString();
         }
+        else if (type == InvoiceDetailType.NetTotalAmount.getValue())
+        {
+            return InvoiceDetailType.NetTotalAmount.toString();
+        }
         else if (type == InvoiceDetailType.InvoiceDate.getValue())
         {
             return InvoiceDetailType.InvoiceDate.toString();
@@ -92,6 +96,10 @@ public class InvoiceFeatureDetectionResponse {
         else if (type == InvoiceDetailType.DocumentType.getValue())
         {
             return InvoiceDetailType.DocumentType.toString();
+        }
+        else if (type == InvoiceDetailType.VatAmount.getValue())
+        {
+            return InvoiceDetailType.VatAmount.toString();
         }
         else if (type == InvoiceDetailType.Iban.getValue())
         {
