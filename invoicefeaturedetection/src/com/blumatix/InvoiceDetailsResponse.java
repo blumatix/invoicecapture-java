@@ -13,6 +13,17 @@ public class InvoiceDetailsResponse {
 
     private int DocumentResolution;
     private List<InvoiceFeatureDetectionResponse> InvoiceDetailTypePredictions;
+    private List<InvoiceDetailsGroup> PredictionGroups;
+
+    public int getDocumentResolution()
+    {
+        return DocumentResolution;
+    }
+
+    public void setDocumentResolution(int documentResolution)
+    {
+        DocumentResolution = documentResolution;
+    }
 
     public List<InvoiceFeatureDetectionResponse> getInvoiceDetailTypePredictions()
     {
@@ -24,14 +35,14 @@ public class InvoiceDetailsResponse {
         InvoiceDetailTypePredictions = invoiceFeaturePredictions;
     }
 
-    public int getDocumentResolution()
+    public List<InvoiceDetailsGroup> getPredictionGroups()
     {
-        return DocumentResolution;
+        return PredictionGroups;
     }
 
-    public void setDocumentResolution(int documentResolution)
+    public void setPredictionGroups(List<InvoiceDetailsGroup> predictionGroups)
     {
-        DocumentResolution = documentResolution;
+        PredictionGroups = predictionGroups;
     }
 
     public static InvoiceDetailsResponse CreateResponse(String responseString )
@@ -48,8 +59,13 @@ public class InvoiceDetailsResponse {
         if (InvoiceDetailTypePredictions != null)
         {
             sb.append("DocumentResolution: ").append(DocumentResolution).append('\n');
+
             for (InvoiceFeatureDetectionResponse p: InvoiceDetailTypePredictions) {
                 sb.append(p.toString()).append('\n');
+            }
+
+            for (InvoiceDetailsGroup group : PredictionGroups) {
+                sb.append(group.toString()).append('\n');
             }
         }
 

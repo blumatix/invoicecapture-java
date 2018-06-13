@@ -10,20 +10,18 @@ import java.nio.file.Paths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 public class Main {
-
     private static Logger logger = LogManager.getLogger(Main.class);
-
 
     public static void main(String[] args) throws Exception {
         String invoiceFolder;
         String apiKey;
         String url;
+        boolean all = false;
 
-        if (args.length != 2)
+        if (args.length != 2 && args.length != 3)
         {
-            System.out.println( "Usage: java -cp \".\\libs\\gson-2.8.0.jar;. PathToClassesRootFolder com.blumatix.Main invoiceFolder apiKey");
+            System.out.println( "Usage: java -cp \".\\libs\\gson-2.8.0.jar;. PathToClassesRootFolder\" com.blumatix.Main invoiceFolder apiKey [all]");
             return;
         }
         else
@@ -31,22 +29,42 @@ public class Main {
             invoiceFolder = args[0];
             apiKey = args[1];
 
-            System.out.println( "Invoice folder: " + invoiceFolder);
-            System.out.println( "ApiKey: " + apiKey);
+            if (args.length == 3)
+            {
+                System.out.println( "Invoice folder: " + args[0]);
+                System.out.println( "ApiKey: " + args[1]);
+                System.out.println( "All: " + args[2]);
+
+                if (args[2].equals("all"))
+                {
+                    all = true;
+                }
+                else
+                {
+                    System.out.println( "Invalid third argument. Must be 'all' or empty!");
+                    return;
+                }
+            }
         }
 
         Main main = new Main();
 
-        // InvoiceFeatures that shall be detected: DocumentType, GrandTotalAmount, InvoiceId, InvoiceDate
-        int invoiceFeatures =
-                    //InvoiceDetailType.DocumentType.getValue()     |
-                    InvoiceDetailType.GrandTotalAmount.getValue()   |
-                    InvoiceDetailType.InvoiceId.getValue()          |
-                    InvoiceDetailType.InvoiceDate.getValue()        |
-                    InvoiceDetailType.Iban.getValue()               |
-                    InvoiceDetailType.TaxNo.getValue()              |
-                    InvoiceDetailType.UId.getValue();
+        int invoiceFeatures = -1;
 
+        if (all)
+        {
+            // Request all available InvoiceDetails
+            invoiceFeatures = InvoiceDetailType.None.getValue();
+        }
+        else
+        {
+            // Request only a subset of avaiable InvoiceDetails
+            invoiceFeatures =
+                InvoiceDetailType.DocumentType.getValue()       |
+                InvoiceDetailType.Iban.getValue()               |
+                InvoiceDetailType.GrandTotalAmount.getValue()   |
+                InvoiceDetailType.InvoiceId.getValue();
+        }
 
         Path path = Paths.get(invoiceFolder);
         if (!Files.exists(path))
@@ -73,7 +91,9 @@ public class Main {
 
     private void requestInvoiceDetails(String filename, String apiKey, int invoiceFeatures ) throws Exception {
         // REST query
-        String urlString = "https://blumatixcapturesdk-v1-2.azurewebsites.net/v1-2/invoicedetail/detect";
+        //String urlString = "https://blumatixcapturesdk-v1-2.azurewebsites.net/v1-2/invoicedetail/detect";
+
+        String urlString = "http://localhost:8090/invoicedetail/detect";
 
         Main.logger.info("CaptureSdk Url: " + urlString);
 

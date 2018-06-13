@@ -6,18 +6,13 @@ package com.blumatix;
  */
 public class InvoiceFeatureDetectionResponse {
     private int Type;
+    private String TypeName;
     private String Value;
     private double Score;
     private int X;
     private int Y;
     private int Width;
     private int Height;
-
-    @Override
-    public String toString() {
-        return String.format("%s,Value:%s,Score:%f,[X:%d,Y:%d,Width:%d,Height:%d]",
-                toFeatureTypeString(Type), Value.toString(), Score, X, Y, Width, Height);
-    }
 
     public int getFeatureType() {
         return Type;
@@ -26,6 +21,10 @@ public class InvoiceFeatureDetectionResponse {
     public void setFeatureType(int featureType) {
         Type = featureType;
     }
+
+    public String getTypeName() {return TypeName;}
+
+    public void setTypeName(String typeName) { TypeName = typeName; }
 
     public String getValue() {
         return Value;
@@ -75,47 +74,9 @@ public class InvoiceFeatureDetectionResponse {
         Height = height;
     }
 
-    private String toFeatureTypeString( int type )
-    {
-        if (type == InvoiceDetailType.GrandTotalAmount.getValue())
-        {
-            return InvoiceDetailType.GrandTotalAmount.toString();
-        }
-        else if (type == InvoiceDetailType.NetTotalAmount.getValue())
-        {
-            return InvoiceDetailType.NetTotalAmount.toString();
-        }
-        else if (type == InvoiceDetailType.InvoiceDate.getValue())
-        {
-            return InvoiceDetailType.InvoiceDate.toString();
-        }
-        else if (type == InvoiceDetailType.InvoiceId.getValue())
-        {
-            return InvoiceDetailType.InvoiceId.toString();
-        }
-        else if (type == InvoiceDetailType.DocumentType.getValue())
-        {
-            return InvoiceDetailType.DocumentType.toString();
-        }
-        else if (type == InvoiceDetailType.VatAmount.getValue())
-        {
-            return InvoiceDetailType.VatAmount.toString();
-        }
-        else if (type == InvoiceDetailType.Iban.getValue())
-        {
-            return InvoiceDetailType.Iban.toString();
-        }
-        else if (type == InvoiceDetailType.TaxNo.getValue())
-        {
-            return InvoiceDetailType.TaxNo.toString();
-        }
-        else if (type == InvoiceDetailType.UId.getValue())
-        {
-            return InvoiceDetailType.UId.toString();
-        }
-        else
-        {
-            return "Unkown InvoiceFeature";
-        }
+    @Override
+    public String toString() {
+        return String.format("InvoiceDetail: %s, Type: %d,Value:%s,Score:%f,[X:%d,Y:%d,Width:%d,Height:%d]",
+                TypeName, Type, Value.toString(), Score, X, Y, Width, Height);
     }
 }
