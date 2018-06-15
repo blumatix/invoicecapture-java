@@ -91,9 +91,8 @@ public class Main {
 
     private void requestInvoiceDetails(String filename, String apiKey, int invoiceFeatures ) throws Exception {
         // REST query
-        //String urlString = "https://blumatixcapturesdk-v1-2.azurewebsites.net/v1-2/invoicedetail/detect";
-
-        String urlString = "http://localhost:8090/invoicedetail/detect";
+        String urlString = "https://blumatixcapturesdk-v1-3.azurewebsites.net/invoicedetail/detect";
+        String version = "v1-3";
 
         Main.logger.info("CaptureSdk Url: " + urlString);
 
@@ -121,7 +120,7 @@ public class Main {
         DataOutputStream writeStream = new DataOutputStream(connection.getOutputStream());
 
         // Instantiate a new request object that shall be sent as a json string to the capturesdk service
-        InvoiceDetailsRequest invoiceRequest = new InvoiceDetailsRequest( invoiceFeatures, filename);
+        InvoiceDetailsRequest invoiceRequest = new InvoiceDetailsRequest( invoiceFeatures, filename, version);
 
         // Convert InvoiceRequest object to a json string
         // This string is then sent in the POST request to the capturesdk service

@@ -12,21 +12,23 @@ import com.google.gson.Gson;
  * Request object used to request certain invoice features of an invoice.
  */
 public class InvoiceDetailsRequest {
-    private int Flags;
+    private int Filter;
     private String Invoice;
+    private String Version;
 
-    public InvoiceDetailsRequest(int flags, String filename) throws IOException
+    public InvoiceDetailsRequest(int filter, String filename, String version) throws IOException
     {
-        Flags = flags;
+        Filter = filter;
         setInvoice(filename);
+        Version = version;
     }
 
     /**
      * Gets the invoice feature bitmask.
      * @return Bitmask representing the invoice features to be detected.
      */
-    public int getFlags() {
-        return Flags;
+    public int getFilter() {
+        return Filter;
     }
 
     /**
@@ -36,6 +38,8 @@ public class InvoiceDetailsRequest {
     public byte[] getInvoice() {
         return Base64.getDecoder().decode(Invoice);
     }
+
+    public String getVersion() { return Version; }
 
     /**
      * Serializes this PredictInvoiceRequest instance into a json string as it is required by the capturesdk
