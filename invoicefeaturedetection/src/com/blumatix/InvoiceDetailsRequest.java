@@ -15,12 +15,14 @@ public class InvoiceDetailsRequest {
     private int Filter;
     private String Invoice;
     private String Version;
+    private boolean CreateResultPdf;
 
-    public InvoiceDetailsRequest(int filter, String filename, String version) throws IOException
+    public InvoiceDetailsRequest(int filter, String filename, String version, boolean createResultPdf) throws IOException
     {
         Filter = filter;
         setInvoice(filename);
         Version = version;
+        CreateResultPdf = createResultPdf;
     }
 
     /**

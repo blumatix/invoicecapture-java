@@ -13,13 +13,15 @@ public enum InvoiceDetailType {
     DocumentType(8192),
     VatAmount(131072),
     Iban(16384),
-    TaxNo(4194304),
+    InvoiceCurrency(524288),
+    CustomerId(2097152),
     UId(8388608),
     SenderOrderId(16777216),
     ReceiverOrderId(33554432),
     SenderOrderDate(67108864),
     ReceiverOrderDate(134217728),
-    VatGroup(536870912);
+    VatGroup(536870912),
+    CustomInvoiceDetail(-2147483648);
 
     private final int id;
 
@@ -45,5 +47,15 @@ public enum InvoiceDetailType {
     public static String toString(int id)
     {
         return getValue(id).name();
+    }
+
+    public static InvoiceDetailType fromString(String text) {
+        for (InvoiceDetailType d : InvoiceDetailType.values()) {
+            if (d.name().equalsIgnoreCase(text)) {
+                return d;
+            }
+        }
+
+        return null;
     }
 }

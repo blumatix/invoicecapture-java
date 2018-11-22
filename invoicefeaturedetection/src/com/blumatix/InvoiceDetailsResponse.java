@@ -1,6 +1,8 @@
 package com.blumatix;
 
 import java.util.List;
+import java.util.Base64;
+
 import com.google.gson.Gson;
 
 /**
@@ -14,6 +16,7 @@ public class InvoiceDetailsResponse {
     private int DocumentResolution;
     private List<InvoiceFeatureDetectionResponse> InvoiceDetailTypePredictions;
     private List<InvoiceDetailsGroup> PredictionGroups;
+    private String ResultPdf;
 
     public int getDocumentResolution()
     {
@@ -44,6 +47,8 @@ public class InvoiceDetailsResponse {
     {
         PredictionGroups = predictionGroups;
     }
+
+    public byte[] getResultPdf() { return Base64.getDecoder().decode(ResultPdf); }
 
     public static InvoiceDetailsResponse CreateResponse(String responseString )
     {
