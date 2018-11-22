@@ -54,3 +54,5 @@ You get detailed help:
 - CAPTURESDK_URL: Base url to our capture service
 - CAPTURESDK_VERSION: A specific capture sdk version
 - OUTPUT_FOLDER: A valid folder used to store results
+
+__NOTE__ All paths must be properly escaped, e.g. "C:\\tmp\\invoicefolder"
