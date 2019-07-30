@@ -18,13 +18,26 @@ A java example application which demonstrates how our invoice capture REST API c
 - ```javac -cp ".\libs\gson-2.8.0.jar;.\libs\log4j-api-2.9.0.jar;.\libs\log4j-core-2.9.0.jar;.\libs\commons-cli.1.4.jar;.\out\production\invoicefeaturedetection" .\src\com\blumatix\*.java -d .\out\production\invoicefeaturedetection\```
 
 ## Usage
- - Open a shell, e.g. from Powershell
+Open a shell, e.g. from Powershell
  
+### Example 1
+In the following example invoices are taken from a folder. Each invoice result is written to the provided outputPath
 ```sh
 	PS> cd C:\RepoFolder\invoicefeaturedetection"
 	PS> $env:CLASSPATH = "$pwd\libs\*;$pwd\out\production\invoicefeaturedetection"
 	PS> java -cp $env:CLASSPATH com.blumatix.Main -folderPath INVOICE_FOLDER -apiKey APIKEY -url CAPTURESDK_URL -outputPath OUTPUT_FOLDER
 ```
+
+### Example 2
+In this example a single invoice is sent to the BLU DELTA service. The invoice result is written to the provided outputPath
+```sh
+	PS> cd C:\RepoFolder\invoicefeaturedetection"
+	PS> $env:CLASSPATH = "$pwd\libs\*;$pwd\out\production\invoicefeaturedetection"
+	PS> java -cp $env:CLASSPATH com.blumatix.Main -i INVOICE_FILE_PATH -apiKey APIKEY -url CAPTURESDK_URL -outputPath OUTPUT_FOLDER
+```
+
+
+## Help
 You get detailed help:
 ```sh
 	PS> cd C:\RepoFolder\invoicefeaturedetection"
