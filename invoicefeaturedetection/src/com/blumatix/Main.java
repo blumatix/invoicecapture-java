@@ -18,7 +18,6 @@ public class Main {
         String filename = "";
         String apiKey="";
         String url="";
-        String version="";
         String[] invoiceDetails;
         boolean createResultPdf = false;
         String outputPath=".";
@@ -53,10 +52,6 @@ public class Main {
 
             if (cmd.hasOption("url")) {
                 url = cmd.getOptionValue("url");
-            }
-
-            if (cmd.hasOption("version")) {
-                version = cmd.getOptionValue("version");
             }
 
             if (cmd.hasOption("invoiceDetails")) {
@@ -101,7 +96,7 @@ public class Main {
         for (File file : invoices) {
             String invoicename = file.getAbsolutePath();
             Main.logger.info( "Sending " + ++invoiceCounter + "/" + totalInvoices + " invoice request " + invoicename );
-            String response = main.requestInvoiceDetails(invoicename, apiKey, invoiceFeatures, url, version, createResultPdf, outputPath);
+            String response = main.requestInvoiceDetails(invoicename, apiKey, invoiceFeatures, url, createResultPdf, outputPath);
             Main.logger.info( "Received invoice features of invoice: " + invoicename );
             String invoiceNameWithoutExtension = getNameWithoutExtension(Paths.get(invoicename));
             writeResultFile(response, outputPath, invoiceNameWithoutExtension);
@@ -136,14 +131,6 @@ public class Main {
                 .withDescription("CaptureSdk base url")
                 .create("u");
         options.addOption(url);
-
-        Option version = OptionBuilder
-                .withLongOpt("version")
-                .withArgName("CAPUTURESDK_VERSION")
-                .hasArgs(1)
-                .withDescription("CaptureSdk version")
-                .create("v");
-        options.addOption(version);
 
         options.addOption("resultPdf", "Requests and creates a ResultPdf");
 
@@ -186,7 +173,7 @@ public class Main {
     }
 
     private String requestInvoiceDetails(String filename, String apiKey, int invoiceFeatures, String baseUrl,
-                                       String version, boolean createResultPdf, String outputPath ) throws Exception {
+                                       boolean createResultPdf, String outputPath ) throws Exception {
         // REST query
         String urlString = baseUrl + "/invoicedetail/detect";
         Main.logger.info("CaptureSdk Url: " + urlString);
@@ -214,7 +201,7 @@ public class Main {
         DataOutputStream writeStream = new DataOutputStream(connection.getOutputStream());
 
         // Instantiate a new request object that shall be sent as a json string to the capturesdk service
-        InvoiceDetailsRequest invoiceRequest = new InvoiceDetailsRequest( invoiceFeatures, filename, version, createResultPdf);
+        InvoiceDetailsRequest invoiceRequest = new InvoiceDetailsRequest( invoiceFeatures, filename, createResultPdf);
 
         // Convert InvoiceRequest object to a json string
         // This string is then sent in the POST request to the capturesdk service

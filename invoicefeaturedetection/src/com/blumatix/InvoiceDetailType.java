@@ -6,21 +6,27 @@ package com.blumatix;
  */
 public enum InvoiceDetailType {
     None(0),
+    Sender(2),
     DeliveryDate(8),
     GrandTotalAmount(16),
     InvoiceDate(64),
+    NetTotalAmount(256),
     InvoiceId(1024),
     DocumentType(8192),
-    VatAmount(131072),
     Iban(16384),
+    Bic(32768),
+    LineItems(65536),
     InvoiceCurrency(524288),
+    DeliveryNoteId(1048576),
     CustomerId(2097152),
+    TaxNumber(4194304),
     UId(8388608),
     SenderOrderId(16777216),
     ReceiverOrderId(33554432),
     SenderOrderDate(67108864),
     ReceiverOrderDate(134217728),
     VatGroup(536870912),
+    VatTotalAmount(1073741824),
     CustomInvoiceDetail(-2147483648);
 
     private final int id;

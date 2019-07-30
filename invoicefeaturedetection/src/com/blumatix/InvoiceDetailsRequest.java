@@ -14,14 +14,12 @@ import com.google.gson.Gson;
 public class InvoiceDetailsRequest {
     private int Filter;
     private String Invoice;
-    private String Version;
     private boolean CreateResultPdf;
 
-    public InvoiceDetailsRequest(int filter, String filename, String version, boolean createResultPdf) throws IOException
+    public InvoiceDetailsRequest(int filter, String filename,  boolean createResultPdf) throws IOException
     {
         Filter = filter;
         setInvoice(filename);
-        Version = version;
         CreateResultPdf = createResultPdf;
     }
 
@@ -40,8 +38,6 @@ public class InvoiceDetailsRequest {
     public byte[] getInvoice() {
         return Base64.getDecoder().decode(Invoice);
     }
-
-    public String getVersion() { return Version; }
 
     /**
      * Serializes this PredictInvoiceRequest instance into a json string as it is required by the capturesdk
