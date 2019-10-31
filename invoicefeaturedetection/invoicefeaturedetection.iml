@@ -11,5 +11,6 @@
     <orderEntry type="library" name="gson-2.8.0" level="project" />
     <orderEntry type="library" name="log4j-api-2.9.0" level="project" />
     <orderEntry type="library" name="log4j-core-2.9.0" level="project" />
+    <orderEntry type="library" name="commons-cli-1.4" level="project" />
   </component>
 </module>
