@@ -1,5 +1,5 @@
 # invoicecapture-java
-A java example application which demonstrates how our invoice capture REST API can be used to retrieve information about specific invoice details. Moreover, it is now possible to request a ResultPdf which is an invoice in pdf format where all InvoiceDetails are marked in a certain color.
+A java example application demonstrating how the [BLU DELTA AI invoice capture](https://bludelta.ai) REST API can be used to retrieve information about specific invoice details. Moreover, it is now possible to request a ResultPdf which is an invoice in pdf format where all InvoiceDetails are marked in a certain color.
 
 ## Dependencies
 - Java SDK: 1.8, version 1.8.0_112
