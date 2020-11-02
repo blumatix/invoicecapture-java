@@ -5,7 +5,7 @@ package com.blumatix;
  * Contains a single detected invoice feature
  */
 public class InvoiceFeatureDetectionResponse {
-    private int Type;
+    private long Type;
     private String TypeName;
     private String Value;
     private double Score;
@@ -14,11 +14,11 @@ public class InvoiceFeatureDetectionResponse {
     private int Width;
     private int Height;
 
-    public int getFeatureType() {
+    public long getFeatureType() {
         return Type;
     }
 
-    public void setFeatureType(int featureType) {
+    public void setFeatureType(long featureType) {
         Type = featureType;
     }
 

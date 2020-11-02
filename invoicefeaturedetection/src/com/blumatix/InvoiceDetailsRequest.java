@@ -12,12 +12,12 @@ import com.google.gson.Gson;
  * Request object used to request certain invoice features of an invoice.
  */
 public class InvoiceDetailsRequest {
-    private int Filter;
+    private long Filter;
     private String Invoice;
     private String Version;
     private boolean CreateResultPdf;
 
-    public InvoiceDetailsRequest(int filter, String filename, String version, boolean createResultPdf) throws IOException
+    public InvoiceDetailsRequest(long filter, String filename, String version, boolean createResultPdf) throws IOException
     {
         Filter = filter;
         setInvoice(filename);
@@ -29,7 +29,7 @@ public class InvoiceDetailsRequest {
      * Gets the invoice feature bitmask.
      * @return Bitmask representing the invoice features to be detected.
      */
-    public int getFilter() {
+    public long getFilter() {
         return Filter;
     }
 

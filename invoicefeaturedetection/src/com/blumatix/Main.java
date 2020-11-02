@@ -22,7 +22,7 @@ public class Main {
         String[] invoiceDetails;
         boolean createResultPdf = false;
         String outputPath=".";
-        int invoiceFeatures = -1;
+        long invoiceFeatures = -1;
 
         CommandLineParser parser = new DefaultParser();
 
@@ -162,8 +162,8 @@ public class Main {
         return options;
     }
 
-    private static int getInvoiceDetailsFilterMask(String[] invoiceDetails) throws Exception {
-        int invoiceFeatures = 0;
+    private static long getInvoiceDetailsFilterMask(String[] invoiceDetails) throws Exception {
+        long invoiceFeatures = 0;
         if (invoiceDetails == null)
         {
             // Request all available InvoiceDetails
@@ -185,7 +185,7 @@ public class Main {
         return invoiceFeatures;
     }
 
-    private String requestInvoiceDetails(String filename, String apiKey, int invoiceFeatures, String baseUrl,
+    private String requestInvoiceDetails(String filename, String apiKey, long invoiceFeatures, String baseUrl,
                                        String version, boolean createResultPdf, String outputPath ) throws Exception {
         // REST query
         String urlString = baseUrl + "/invoicedetail/detect";

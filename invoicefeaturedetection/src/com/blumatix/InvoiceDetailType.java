@@ -5,44 +5,48 @@ package com.blumatix;
  * This enum defines all invoice features that can be detected.
  */
 public enum InvoiceDetailType {
-    None(0),
-    Sender(2),
-    DeliveryDate(8),
-    GrandTotalAmount(16),
-    VatRate(32),
-    InvoiceDate(64),
-    Receiver(128),
-    NetTotalAmount(256),
-    InvoiceId(1024),
-    DocumentType(8192),
-    Iban(16384),
-    Bic(32768),
-    LineItem(65536),
-    VatAmount(131072),
-    InvoiceCurrency(524288),
-    DeliveryNoteId(1048576),
-    CustomerId(2097152),
-    TaxNumber(4194304),
-    UId(8388608),
-    SenderOrderId(16777216),
-    ReceiverOrderId(33554432),
-    SenderOrderDate(67108864),
-    ReceiverOrderDate(134217728),
-    NetAmount(268435456),
-    VatGroup(536870912),
-    VatTotalAmount(1073741824);
+    None(0L),
+    Sender(2L),
+    DeliveryDate(8L),
+    GrandTotalAmount(16L),
+    VatRate(32L),
+    InvoiceDate(64L),
+    Receiver(128L),
+    NetTotalAmount(256L),
+    InvoiceId(1024L),
+    DocumentType(8192L),
+    Iban(16384L),
+    Bic(32768L),
+    LineItem(65536L),
+    VatAmount(131072L),
+    InvoiceCurrency(524288L),
+    DeliveryNoteId(1048576L),
+    CustomerId(2097152L),
+    TaxNumber(4194304L),
+    UId(8388608L),
+    SenderOrderId(16777216L),
+    ReceiverOrderId(33554432L),
+    SenderOrderDate(67108864L),
+    ReceiverOrderDate(134217728L),
+    NetAmount(268435456L),
+    VatGroup(536870912L),
+    VatTotalAmount(1073741824L),
+    BankCode(4294967296L),
+	BankAccount(8589934592L),
+	BankGroup(17179869184L),
+	IsrNumber(34359738368L);
 
-    private final int id;
+    private final long id;
 
-    InvoiceDetailType(int id) { this.id = id; }
+    InvoiceDetailType(long id) { this.id = id; }
 
-    public int getValue() { return id; }
+    public long getValue() { return id; }
 
     public boolean isEmpty(){return this.equals(InvoiceDetailType.None);}
 
-    public boolean compare(int i){return id == i;}
+    public boolean compare(long i){return id == i;}
 
-    public static InvoiceDetailType getValue(int _id)
+    public static InvoiceDetailType getValue(long _id)
     {
         InvoiceDetailType[] As = InvoiceDetailType.values();
         for(int i = 0; i < As.length; i++)
@@ -53,7 +57,7 @@ public enum InvoiceDetailType {
         return InvoiceDetailType.None;
     }
 
-    public static String toString(int id)
+    public static String toString(long id)
     {
         return getValue(id).name();
     }
