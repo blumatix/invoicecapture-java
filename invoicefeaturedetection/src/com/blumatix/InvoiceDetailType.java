@@ -34,7 +34,17 @@ public enum InvoiceDetailType {
     BankCode(4294967296L),
 	BankAccount(8589934592L),
 	BankGroup(17179869184L),
-	IsrNumber(34359738368L);
+    IsrReference(34359738368L),
+    DiscountDate(68719476736L),
+    DiscountStart(137438953472L),
+    DiscountDuration(274877906944L),
+    DiscountPercent(549755813888L),
+    DiscountGroup(1099511627776L),
+    DueDateDate(2199023255552L),
+    DueDateStart(4398046511104L),
+    DueDateDuration(8796093022208L),
+    DueDateGroup(17592186044416L),
+    IsrSubscriber(35184372088832L);
 
     private final long id;
 

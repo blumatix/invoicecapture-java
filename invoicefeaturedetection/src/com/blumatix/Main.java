@@ -22,7 +22,7 @@ public class Main {
         String[] invoiceDetails;
         boolean createResultPdf = false;
         String outputPath=".";
-        long invoiceFeatures = -1;
+        long invoiceFeatures = -1L;
 
         CommandLineParser parser = new DefaultParser();
 
