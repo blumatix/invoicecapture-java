@@ -45,7 +45,9 @@ public enum InvoiceDetailType {
     DueDateDuration(8796093022208L),
     DueDateGroup(17592186044416L),
     IsrSubscriber(35184372088832L),
-    KId(70368744177664);
+    KId(70368744177664L),
+    CompanyRegistrationNumber(140737488355328L),
+    Contacts(281474976710656L);
 
     private final long id;
 
