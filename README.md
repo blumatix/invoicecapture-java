@@ -60,3 +60,5 @@ You get detailed help:
 - OUTPUT_FOLDER: A valid folder used to store results
 
 __NOTE__ All paths must be properly escaped, e.g. "C:\\tmp\\invoicefolder"
+
+### 5x8 Support: bludelta-support@blumatix.com
