@@ -1,5 +1,9 @@
 # invoicecapture-java
-An example application demonstrating how the [BLU DELTA AI invoice capture / KI Rechnungserfassung](https://www.bludelta.de/en/ressources/) REST API can be used to retrieve information about specific invoice details. Moreover, it is now possible to request a ResultPdf which is an invoice in pdf format where all InvoiceDetails are marked in a certain color.
+Contains sample code to access our capture client.
+
+### More information and quick test capability: [BLU DELTA AI invoice capture - KI Rechnungserfassung](https://www.bludelta.de)
+### Request free API key here: [Capturing - Rechungserfassung Get Started](https://www.bludelta.de/en/get-started/)
+### Access URL (latest version): https://api.bludelta.ai/v1-17
 
 ## Dependencies
 - Java SDK: 1.8, version 1.8.0_112
